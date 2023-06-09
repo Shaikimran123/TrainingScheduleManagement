@@ -1,5 +1,5 @@
-// #ifndef TSMA_H
-// #define TSMA_H
+ #ifndef TSMA_H
+ #define TSMA_H
 #include <bits/stdc++.h>
 #include <string>
 using namespace std;
@@ -97,4 +97,4 @@ void facultyQuitApp();
 
 
 
-// #endif
+ #endif
