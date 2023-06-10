@@ -1,18 +1,18 @@
 #include<bits/stdc++.h>
 #include "tsm.h"
-
-void adminLogin();
-void facultyLogin();
-
 using namespace std;
 
-int num=0;
+
+
+
 int main()
 {
 MainFun();
 }
+
 void MainFun()
-{	homepage();	
+{	
+    homepage();	
 	string choice;
 	while(true)
 	{
@@ -32,6 +32,7 @@ void MainFun()
 }
 void adminLogin()
 {
+    int num=0; 
 	class admin adm;
 	string userId="admin";
 	string password="12345";
@@ -59,7 +60,7 @@ void adminLogin()
 		else
 		{
 			while(true){
-			cout<<"\nPress 1 to relogin 2 forget password";
+			cout<<"\nPress 1 to relogin";
 			int p; cin>>p; 
 			if(!IntValid(p)) {	
 			if(p==1) 
@@ -74,6 +75,7 @@ void adminLogin()
 }
 void facultyLogin()
 {
+    int num=0;
 	class faculty fac;
 	int count=0;
 	string id,pass,userid,password;
