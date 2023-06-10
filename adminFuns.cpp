@@ -6,6 +6,32 @@ using namespace std;
 int batchID, nod, nop;
 string technology, startDate, endDate, venueDetail, month;
 
+
+void admin:: adminModules()
+    {
+        
+ 	//20463174_ShaikImran       
+        adminsHomePage();
+        while(true){
+	string choice;
+        cout << "\n\nPlease enter your choice : ";
+        cin >> choice;
+        if (validBatchId(choice))
+	{
+	stringstream ss(choice); int ch; ss>>ch; 
+        switch (ch)
+	{
+            case 1: system("clear"); createSchedule(); break;
+            case 2: system("clear"); updateSchedule(); break;
+            case 3: system("clear"); allotTrainer(); break;
+            case 4: system("clear"); generateReport(); break;
+            case 5: system("clear"); MainFun(); break;                 
+	    default: cout << "Please choose valid Option" << endl; break;
+        }
+	}else { continue;}}
+ }
+
+
 void admin:: createSchedule()           
 { 
 	adminCreateScheduleMenu();
@@ -138,10 +164,17 @@ void admin:: createSchedule()
         else
         {
 	    system("clear");
-	    cout<<"\n\nPress 1 to view home page : ";
-	    int p;
-            cin>>p;
-            if(p==1) { system("clear"); adminModules();}
+	    	while(true){
+			cout<<"\nPress 1 to relogin";
+			int p; cin>>p; 
+			if(!IntValid(p)) {	
+			if(p==1) 
+			{	
+				system("clear");
+				adminModules();break;
+			}
+			else{ cout<<"plz enter only 1";}
+			}}
         }
     }
 
@@ -364,7 +397,7 @@ void admin:: updateSchedule()
         
          if (flag == 0)
         {
-            cout << "\n\tNo Such Record Found for batch_id...!! \n\n\tTaking back you to on your Dashboard" << endl;
+            cout << "\n\tNo Such Record Found for batch_id...!! "<< endl;
         }
 
   
@@ -381,11 +414,17 @@ void admin:: updateSchedule()
         else
         {
              system("clear");
-             cout<<"\n\nPress 1 to view home page : ";
-             int p;
-             cin>>p;
-             if(IntValid(p)) adminModules();
-             if(p==1) { system("clear"); adminModules();}	     
+             while(true){
+			cout<<"\nPress 1 to relogin";
+			int p; cin>>p; 
+			if(!IntValid(p)) {	
+			if(p==1) 
+			{	
+				system("clear");
+				adminModules();break;
+			}
+			else{ cout<<"plz enter only 1";}
+			}}
         }
     }
 void admin:: allotTrainer()         
@@ -447,12 +486,20 @@ void admin:: allotTrainer()
         }
         else
         {	
-             system("clear");
-             cout<<"\n\nPress 1 to view home page : ";
-             int p;
-             cin>>p;
-             if(IntValid(p)) adminModules();
-             if(p==1) { system("clear"); adminModules();}
+            system("clear");
+            while(true){
+			cout<<"\nPress 1 to relogin";
+			int p; cin>>p; 
+			if(!IntValid(p)) {	
+			if(p==1) 
+			{	
+				system("clear");
+				adminModules();break;
+			}
+			else{ cout<<"plz enter only 1";}
+			}}
+             
+             
         }
     }
 void admin:: generateReport()           
@@ -502,36 +549,19 @@ void admin:: generateReport()
         }
         else
         {
-             system("clear");
-             cout<<"\n\nPress 1 to view home page : ";
-             int p;
-             cin>>p;
-             if(IntValid(p)) adminModules();
-             if(p==1) { system("clear"); adminModules();}
+            system("clear");
+            	while(true){
+			cout<<"\nPress 1 to relogin";
+			int p; cin>>p; 
+			if(!IntValid(p)) {	
+			if(p==1) 
+			{	
+				system("clear");
+				adminModules();break;
+			}
+			else{ cout<<"plz enter only 1";}
+			}}
         }
         
         
     }
-void admin:: adminModules()
-    {
-        
- 	//20463174_ShaikImran       
-        adminsHomePage();
-        while(true){
-	string choice;
-        cout << "\n\nPlease enter your choice : ";
-        cin >> choice;
-        if (validBatchId(choice))
-	{
-	stringstream ss(choice); int ch; ss>>ch; 
-        switch (ch)
-	{
-            case 1: system("clear"); createSchedule(); break;
-            case 2: system("clear"); updateSchedule(); break;
-            case 3: system("clear"); allotTrainer(); break;
-            case 4: system("clear"); generateReport(); break;
-            case 5: system("clear"); MainFun(); break;                 
-	    default: cout << "Please choose valid Option" << endl; break;
-        }
-	}else { continue;}}
- }
