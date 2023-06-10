@@ -1,12 +1,14 @@
- #ifndef TSMA_H
- #define TSMA_H
+// #ifndef TSMA_H
+// #define TSMA_H
 #include <bits/stdc++.h>
 #include <string>
 using namespace std;
 
-
-
+void adminLogin();
+void facultyLogin();
 void MainFun();
+
+void fogetPassword(string);
 
 class admin
 {
@@ -20,18 +22,15 @@ class admin
 
 class faculty
 {
-          public:
-                  std::string loginId;
-                  void viewSchedule();
-                  void AcceptOrCancelSchedule();
-                  void facultyModules();
-		  void acceptASchedule();
- 		  void cancelASchedule();
+    public:
+        std::string loginId;
+        void facultyModules();
+        void viewSchedule();
+        void AcceptOrCancelSchedule();
+    	void acceptASchedule();
+ 	    void cancelASchedule();
 };
 
-
-
-void fogetPassword(string);
 
 
 
@@ -97,4 +96,4 @@ void facultyQuitApp();
 
 
 
- #endif
+// #endif
