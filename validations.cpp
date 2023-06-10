@@ -434,6 +434,7 @@ void fogetPassword(string uid)
     cout<<"Enter confirm password";
     cin>>cpass;
     if((uid != userid) || (npass!=cpass)) { cout<<"miss match"<<endl; continue;}
+    else if(npass.size()<7) { cout<<"password length should be 8 or more"<<endl; continue;}
     else{
     int i=0;
     while(i<v.size())
