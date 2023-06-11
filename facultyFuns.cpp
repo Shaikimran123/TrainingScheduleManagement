@@ -126,13 +126,23 @@ while(true)
 	    }
             else
             {
-                if(checkcancelSchedules(cid,faculty::loginId))
+                cout<<"Re-confim cancelation (y/n)"<<endl;
+                string sttt; 
+                cin>>sttt;
+                if(sttt=="yes" || sttt=="y")
                 {
-                    cout<<"\n\t\t\tSuccessfully cancel"<<endl; break;
+                    if(checkcancelSchedules(cid,faculty::loginId))
+                    {
+                        cout<<"\n\t\t\tSuccessfully cancel"<<endl; break;
+                    }
+                    else 
+                    {
+                        cout<<"\nAdmin did not allot a schedule to you :)"<<endl; break;
+                    }
                 }
-                else 
+                else
                 {
-                    cout<<"\nAdmin did not allot a schedule to you :)"<<endl; break;
+                    cout<<"schedule cancelation revoked"<<endl; break;
                 }
             }
         }
