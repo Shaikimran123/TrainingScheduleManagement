@@ -25,7 +25,8 @@ void admin:: adminModules()
             case 2: system("clear"); updateSchedule(); break;
             case 3: system("clear"); allotTrainer(); break;
             case 4: system("clear"); generateReport(); break;
-            case 5: system("clear"); MainFun(); break;                 
+	    case 5: system("clrear"); knowstatus(); break;
+            case 6: system("clear"); MainFun(); break;                 
 	    default: cout << "Please choose valid Option" << endl; break;
         }
 	}else { continue;}}
@@ -565,3 +566,34 @@ void admin:: generateReport()
         
         
     }
+
+
+
+void admin::knowStatus()
+{
+    cout<<"A.Accepted status\nC.cencelation status\nEnter ur choice";
+    string status; cin>>status;
+    if(status=="A" ||status=="a" )
+    {
+        fstream f("trainerAcceptedSchedules.txt");
+	    int batchid,nop,nd; string tech,sd,ed,ve,m,name;
+	    cout<<"batchid"<<"\t"<<"stream"<<"\t" <<"name"<< endl;
+	    cout<<"______________________\n"<<endl;
+	    while(f>>batchid>>tech>>sd>>ed>>nd>>ve>>nop>>m>>name)
+	    {
+            cout<<batchid<<"\t"<<tech<<"\t"<<name<<endl;     	
+	    }
+   }
+   else if(status=="C" || status=="c")
+   {
+    
+    int batchid,nop,nd; string tech,sd,ed,ve,m,name;
+    fstream f("trainerCancelShedules.txt");cout<<"batchid"<<"\t"<<"stream"<<"\t" <<"name"<< endl;
+	    cout<<"______________________\n"<<endl;
+    while(f>>batchid>>tech>>sd>>ed>>nd>>ve>>nop>>m>>name)
+    {
+            cout<<batchid<<" "<<tech<<" "<<name<<endl;    
+    }
+}else { cout<<"enter a valid input"<<endl; knowStatus();}
+}
+
