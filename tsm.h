@@ -18,6 +18,7 @@ class admin
 		void allotTrainer();
 		void generateReport();
 		void adminModules();
+		void knowStatus();
 };
 
 class faculty
