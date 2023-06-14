@@ -62,7 +62,7 @@ bool trainerAcceptedSchedules(int,string);
 bool uniquetrainerCancelSchedules(int,string);
 bool canotCancelSchedule(int,string); 
 bool checkcancelSchedules(int,string);
-
+void acceptCancelledSchedule(int,string);
 
 
 
