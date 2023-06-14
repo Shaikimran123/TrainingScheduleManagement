@@ -85,6 +85,18 @@ while(true)
 	    if(canotAcceptSchedule(bid,faculty::loginId))
 	    {
 		cout<<"\n\nYou've already canceled your schedule.Now you can't accept it."<<endl;
+		cout<<"if u want to accept the cancelled schedule, you need to delet the schedule in cacellation:(y/n)"; string s; cin>>s;
+		if(s=="y")
+		{
+		acceptCancelledSchedule(bid,faculty::loginId);
+		cout<<"tSuccessfully deleted in cancellation\nnow u can accept ur cancelled schedule"<<endl;
+		    if(trainerAcceptedSchedules(bid,faculty::loginId))
+            {
+                	cout<<"\n\t\tYour request has been processed for acepting the schedule."<<endl;
+            		break;
+	    	}
+		break;    
+		}
 	        break;
 	    }
 	    else
