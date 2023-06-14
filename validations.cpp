@@ -11,7 +11,6 @@ int IntValid(int n)
 		cin.ignore(256,'\n');
 		cout<<"\n\twrong input.."<<endl;
 		cout<<"\tplease enter once again!!!\n"<<endl;
-
 		return 1;
 	} 
 	else 
@@ -456,3 +455,42 @@ void fogetPassword(string uid)
     cout<<"Successfully fogetPassword\n now relogin:";
 }
 
+void acceptCancelledSchedule(int bid,string fname)
+{
+    vector<string> v;
+    string line,w; fstream f("trainerCancelShedules.txt");
+    while(!f.eof())
+    {
+        getline(f,line);
+        stringstream ss(line);
+
+        while(getline(ss,w,' '))
+        {
+            v.push_back(w);
+        }
+    } f.close();
+    string id; stringstream sss; sss<<bid; sss>>id;
+    vector<string>::iterator i;
+    for(i=v.begin() ;i !=v.end() ; i++){
+        if(*i==id && *(i+8)==fname)
+        {
+           v.erase(i);    i--; //id
+           v.erase(i+1);  i--;//tech
+           v.erase(i+2);  i--;//sdate
+           v.erase(i+3);  i--;//edate
+           v.erase(i+4);  i--;//nd 
+           v.erase(i+5);  i--;//ve 
+           v.erase(i+6);  i--; //nop
+           v.erase(i+7);  i--;//mon
+           v.erase(i+8);  i--;//name
+        }
+    }
+    //for(int jj=0;jj<v.size();jj+=9){ cout<<v[jj]<<" "<<v[jj+1]<<" "<<v[jj+2]<<" "<<v[jj+3]<<" "<<v[jj+4]<<" "<<v[jj+5]<<" "<<v[jj+6]<<" "<<v[jj+7]<<" "<<v[jj+8]<<endl;    }
+    int j=0;
+    fstream ff("trainerCancelShedules.txt",ios::out | ios::trunc);
+    while(j<v.size())
+    {
+        ff<<v[j]<<" "<<v[j+1]<<" "<<v[j+2]<<" "<<v[j+3]<<" "<<v[j+4]<<" "<<v[j+5]<<" "<<v[j+6]<<" "<<v[j+7]<<" "<<v[j+8]<<endl;
+        j+=9;
+    }
+}
