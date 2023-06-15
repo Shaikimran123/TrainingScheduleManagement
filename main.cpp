@@ -78,7 +78,7 @@ void facultyLogin()
     int num=0;
 	class faculty fac;
 	int count=0;
-	string id,pass,userid,password;
+	string id,pass,userid,password,k;
 	facultywelcomepage();
 	cout<<"\n\tEnter Faculty name: ";
 	cin>>userid;
@@ -96,7 +96,10 @@ void facultyLogin()
 	if(count==1)
 	{
 		system("clear");
-		fac.loginId=userid;
+		
+		fac.set_loginId(userid);
+        k=fac.get_loginId();
+        faculty ff(k);
 		fac.facultyModules();
 	}
 	else
@@ -119,7 +122,7 @@ void facultyLogin()
                          {
                                  system("clear");
                                  facultyLogin();break;
-                         }else if(p==2) { fogetPassword(userid); facultyLogin();}
+                         }else if(p==2) { fogetPassword(k); facultyLogin();}
                          else{ cout<<"invalid choice";}
                          }}
 
