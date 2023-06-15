@@ -13,23 +13,39 @@ void fogetPassword(string);
 class admin
 {
 	public:
+	    	void adminModules();
+	private:
 		void createSchedule();
 		void updateSchedule();
 		void allotTrainer();
 		void generateReport();
-		void adminModules();
 		void knowStatus();
 };
 
 class faculty
 {
-    public:
-        std::string loginId;
-        void facultyModules();
+    private:
+        string loginId;
         void viewSchedule();
         void AcceptOrCancelSchedule();
     	void acceptASchedule();
  	    void cancelASchedule();
+    public:
+    
+        void facultyModules();
+        
+        void set_loginId(string s)
+        {
+            loginId=s;
+        }
+        
+        string get_loginId()
+        {
+            return loginId;
+        }
+        faculty(){}
+        faculty(string s){ loginId=s;}
+
 };
 
 
