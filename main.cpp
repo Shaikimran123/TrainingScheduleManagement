@@ -84,48 +84,73 @@ void facultyLogin()
 	cin>>userid;
 	cout<<"\n\tEnter password: ";
 	cin>>password;
-	fstream input("facultyLogin.txt");
-	while(input >> id >> pass)
+	
+	if(facultyFound(userid))
 	{
-		if(id==userid && pass==password )
-		{
-			count=1;
-		}
-	}
-	input.close();
-	if(count==1)
-	{
-		system("clear");
-		
-		fac.set_loginId(userid);
-        k=fac.get_loginId();
-        faculty ff(k);
-		fac.facultyModules();
+    	fstream input("facultyLogin.txt");
+    	while(input >> id >> pass)
+    	{
+    		if(id==userid && pass==password )
+    		{
+    			count=1;
+    		}
+    	}
+    	input.close();
+    	if(count==1)
+    	{
+    		system("clear");
+    		
+    		fac.set_loginId(userid);
+            k=fac.get_loginId();
+            faculty ff(k);
+    		fac.facultyModules();
+    	}
+    	else
+    	{
+    		facultyLoginErrorMsg();
+    		num=num+1;
+    		cout<<"you have "<<abs(num-3)<<" chances."<<endl;
+    		if(num==3)
+                    {
+    			facultyLoginAccessDeniedMsg();
+                            exit(0);
+     	        }
+    		else
+    		{
+    			 while(true){
+                             cout<<"\n\t1.relogin\n\t2.forget passwor"; cout<<"\nEnter your choice : ";
+                             int p; cin>>p;
+                             if(!IntValid(p)) {
+                             if(p==1)
+                             {
+                                     system("clear");
+                                     facultyLogin();break;
+                             }else if(p==2) { fogetPassword(k); facultyLogin();}
+                             else{ cout<<"invalid choice";}
+                             }}
+    
+    		}
+    	}
 	}
 	else
 	{
-		facultyLoginErrorMsg();
-		num=num+1;
-		cout<<"you have "<<abs(num-3)<<" chances."<<endl;
-		if(num==3)
-                {
-			facultyLoginAccessDeniedMsg();
-                        exit(0);
- 	        }
-		else
-		{
-			 while(true){
-                         cout<<"\n\t1.relogin\n\t2.forget passwor"; cout<<"\nEnter your choice : ";
-                         int p; cin>>p;
-                         if(!IntValid(p)) {
-                         if(p==1)
-                         {
-                                 system("clear");
-                                 facultyLogin();break;
-                         }else if(p==2) { fogetPassword(k); facultyLogin();}
-                         else{ cout<<"invalid choice";}
-                         }}
-
-		}
-	}
+	    cout<<"Register"<<endl;
+	    while(true){
+	    string nm,pss,cpss;
+	    cout<<"Enter your name: "; cin>>nm;
+	    cout<<"Enter password: "; cin>>pss;
+	    cout<<"Confirm password: ";cin>>cpss;
+	    ofstream f("facultyLogin.txt",ios::app);
+	    if(passwordValidation(nm,pss,cpss))
+	    {
+	        f<<nm<<" "<<pss<<endl;
+	        f.close();
+	        break;
+	    }
+	    else
+	    {
+	        cout<<"incorect password"<<endl; continue;
+	    }
+	    }
+	} 
 }
