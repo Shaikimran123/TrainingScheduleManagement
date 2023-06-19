@@ -114,8 +114,7 @@ bool techValidateString(string s){
  }
 bool negativeValidate(int n)
 {
-	if(n>0){ return true; }
-	return false;
+	if(n>0){ return true; } return false;
 }
 bool validateMonth(string sd,string month)
 {
@@ -470,19 +469,19 @@ void acceptCancelledSchedule(int bid,string fname)
         }
     } f.close();
     string id; stringstream sss; sss<<bid; sss>>id;
-    vector<string>::iterator i;
-    for(i=v.begin() ;i !=v.end() ; i++){
-        if(*i==id && *(i+8)==fname)
+    
+    for(int i=0 ;i !=v.size() ; i++){
+        if(v[i]==id && v[i+8]==fname)
         {
-           v.erase(i);    i--; //id
-           v.erase(i+1);  i--;//tech
-           v.erase(i+2);  i--;//sdate
-           v.erase(i+3);  i--;//edate
-           v.erase(i+4);  i--;//nd 
-           v.erase(i+5);  i--;//ve 
-           v.erase(i+6);  i--; //nop
-           v.erase(i+7);  i--;//mon
-           v.erase(i+8);  i--;//name
+           v[i]="0"; //id
+           v[i+1]="0";  
+           v[i+2]="0";  
+           v[i+3]="0";  //edate
+           v[i+4]="0";  //nd 
+           v[i+5]="0";  //ve 
+           v[i+6]="0";   //nop
+           v[i+7]="0";  //mon
+           v[i+8]="0";  //name
         }
     }
     //for(int jj=0;jj<v.size();jj+=9){ cout<<v[jj]<<" "<<v[jj+1]<<" "<<v[jj+2]<<" "<<v[jj+3]<<" "<<v[jj+4]<<" "<<v[jj+5]<<" "<<v[jj+6]<<" "<<v[jj+7]<<" "<<v[jj+8]<<endl;    }
@@ -490,7 +489,32 @@ void acceptCancelledSchedule(int bid,string fname)
     fstream ff("trainerCancelShedules.txt",ios::out | ios::trunc);
     while(j<v.size())
     {
+        if(v[j]!="0"){
         ff<<v[j]<<" "<<v[j+1]<<" "<<v[j+2]<<" "<<v[j+3]<<" "<<v[j+4]<<" "<<v[j+5]<<" "<<v[j+6]<<" "<<v[j+7]<<" "<<v[j+8]<<endl;
+        }
         j+=9;
     }
 }
+
+bool passwordValidation(string name,string pass,string cpass)
+{
+if(!validateString(name))
+{
+    return false;
+}
+if(pass==cpass && pass.size()>7)
+{
+    return true;
+}
+else 
+    return false;
+}
+
+
+
+
+
+
+
+
+
